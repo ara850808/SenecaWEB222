@@ -1,0 +1,386 @@
+<!--<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>WEB222 Store</title>
+  </head>
+  <body>
+    <header>Simple clothes</header> -->
+<!--
+      Introduction
+      ------------
+
+      You are asked to create an online store in HTML, CSS, and JavaScript.
+      Please implement a store with all of the following requirements.
+
+      You may remove this comment and place all your HTML in this file.
+
+      Requirements:
+
+      1. Include a header across the top with your store's name, a logo,
+      and use a different background colour, web font, etc. Your header should
+      include info about what the store is, what it sells, etc.  Use some images
+      to try and draw the user in. NOTE: place all your site's images in the
+      `src/images/` directory.
+
+      2. Below the header, a multi-column layout of items you can purchase in the
+      store.  You must have at least 10 items in your store, and at least 2
+      categories of items. For example, if you are selling clothing, you might
+      have categories for Men, Women, and Children, and each category would have
+      its own set of items.  Each item should include:
+      
+        - a picture of the item
+        - the item's name or title
+        - a complete description of the item
+        - a category (i.e., each item must belong to one or more categories)
+        - a price in Canadian Dollars
+      
+      Each item should be its own "card" (i.e., some kind of box around each item
+      separating one from the next, with suitable whitespace between).
+
+      3. A category menu or "sidebar" (left, right, or top depending on your design)
+      showing the different categories of items in your store.  If a
+      user clicks on one of the categories, use CSS and JavaScript to hide all
+      other items in the store (i.e., only show items for the chosen category).
+      Make sure you include a way to return to seeing all categories, and make it
+      obvious to the user that they are only seeing a partial list of items when
+      you filter by category (i.e., use CSS and HTML to change things somehow).
+
+      4. Below the store items, a footer with the name of the store, any relevant
+      links you need to give users.  Include links and icons to any social media
+      for your store (Facebook, Twitter, etc). NOTE: you don't have to create such
+      accounts, but you can provide links to imaginary accounts.
+
+      5. Use at least two different Web Fonts for your store.  The titles should
+      be different from any regular text.  Use a free font service like
+      https://fonts.google.com/ or any other that you choose.  You can also
+      experiment with different font sizes and colours to draw attention toward
+      or away from various parts of your design.
+
+      6. Pick a colour theme using a tool like https://colorhunt.co/ with at least
+      3 colours (primary, secondary, accent), and use them throughout your site
+      for backgrounds, borders, fonts. Your store page needs to look attractive
+      and marks will be given for good a good looking site.  No one will buy from
+      a store that looks like its owners aren't professional or don't care about
+      details.  Also make sure that the colour contrast in your site is suitable
+      for everyone to read.
+
+      7. Use modern CSS to help you achieve your layout.  For example, Flexbox
+      and CSS Grid can help you create professional looking layouts.  Here
+      are some guides to get you started:
+
+       - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
+       - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout
+       
+      You are also welcome to use existing CSS libraries to help you with your layout,
+      but you must also include your own styles (i.e., you can't use a library
+      for everything in your design).
+
+      8. Make sure you don't use copyrighted materials from other sites.  If you use
+      icons, fonts, images, etc., make sure you are legally permitted to reuse them,
+      and include references to indicate where you got them. Some resources to consider:
+
+        - https://unsplash.com/ for images
+        - https://fontawesome.com/ for icons
+        - https://gallery.manypixels.co/ or https://undraw.co/illustrations for illustrations (SVG)
+
+      9. Make sure you reduce the download size of images you include in your
+      store.  Your images shouldn't be larger than 1M in size.  Users don't want to
+      download 10s or 100s of megabytes of data, especially on mobile.  You can use an
+      online tool like https://squoosh.app/ to help you reduce images.  You will
+      lose marks if your images aren't optimized for the web.
+
+      10. Make sure you have no JavaScript or other errors in your Dev Tools Console.
+      Run your site, and test all aspects of it with the Console open, and fix
+      any issues you encounter.
+
+      11. Make sure your code is properly indented and commented, and that you've used
+      good naming practices for variables, functions, ids, classes, etc.
+
+      12. Have fun!  Build something you'd be proud to show future employers in
+      interviews.  Take the time to properly design and implement a beautiful and
+      functional storefront.  Maybe it will inspire you to start your own online business?
+    -->
+<!-- </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"></title>Simple cloeth store</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/pureCss.css" />    
+    <script src="./js/sample.js"></script>
+  </head>
+  <body>
+  <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="/__/firebase/6.2.0/firebase-app.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="/__/firebase/6.2.0/firebase-auth.js"></script>
+  <script src="/__/firebase/6.2.0/firebase-firestore.js"></script>
+    <nav>
+      <div class="center">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="javascript:void(0);" onclick="menu_men();">Men</a></li>
+          <li><a href="javascript:void(0);" onclick="menu_women();">Women</a></li>
+          <li><a href="javascript:void(0);" onclick="menu_children();">Children</a></li>
+          <li><a href="contactForm.html">Register</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div id="home" style="background-color: white; background-image:url(./imgages/do-womens-clothes-seem-weird-lately-because-im-in-2-238-1566411529-1_dblbig.jpg); background-repeat: no-repeat; background-size: cover; height: 750px;">
+      <header>
+        <div class="center" style="text-align: center;">
+          <h2 style="vertical-align: middle">
+            <span style="font-family: naBrush;">Welcome to Simple Clothes Store</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<img
+              src="./imgages/simple_clothes_logo.png"
+              width="50px"
+              height="50px"
+            />
+          </h2>
+        </header>  
+      
+         
+      <section class="main center">        
+        <!-- Start your code here -->
+        <ul class="slides">
+          <input type="radio" name="radio-btn" id="img-1" checked />
+          <li class="slide-container">
+              <div class="slide">
+                  <img src="./imgages/5e9516db558cb30670fa73f9-large.jpg" />
+              </div>
+              <div class="nav">
+                  <label for="img-6" class="prev">&#x2039;</label>
+                  <label for="img-2" class="next">&#x203a;</label>
+              </div>
+          </li>
+      
+          <input type="radio" name="radio-btn" id="img-2" />
+          <li class="slide-container">
+              <div class="slide">
+                <img src="./imgages/58329146764f48040dbb35d8-large.jpg" />
+              </div>
+              <div class="nav">
+                  <label for="img-1" class="prev">&#x2039;</label>
+                  <label for="img-3" class="next">&#x203a;</label>
+              </div>
+          </li>
+      
+          <input type="radio" name="radio-btn" id="img-3" />
+          <li class="slide-container">
+              <div class="slide">
+                <img src="./imgages/098718246c5037f73a47293721f0d166.jpg" />
+              </div>
+              <div class="nav">
+                  <label for="img-2" class="prev">&#x2039;</label>
+                  <label for="img-4" class="next">&#x203a;</label>
+              </div>
+          </li>
+      
+          <input type="radio" name="radio-btn" id="img-4" />
+          <li class="slide-container">
+              <div class="slide">
+                <img src="imgages/501899_XJANM_1082_001_100_0000_Light-.jpg" />
+              </div>
+              <div class="nav">
+                  <label for="img-3" class="prev">&#x2039;</label>
+                  <label for="img-5" class="next">&#x203a;</label>
+              </div>
+          </li>
+      
+          <li class="nav-dots">
+            <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+            <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+            <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+            <label for="img-4" class="nav-dot" id="img-dot-4"></label>
+          </li>
+      </ul>
+    </div>
+
+    <div id="men" style="display: none; background-color: skyblue; overflow:auto">
+      <header>
+        <!-- <div class="center" style="text-align: center;">
+          <h2 style="vertical-align: middle">
+            <span>Clothes for men</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<img
+              src="./imgages/simple_clothes_logo.png"
+              width="50px"
+              height="50px"
+            />
+          </h2>
+        </div> -->
+      </header>      
+      <section class="main center">       
+        <h2>Popular clothes</h2>
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/men/5e9516db558cb30670fa73f9-large.jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>Cow boy style</b></h4>
+            <p>New Arrival! slimfit</p>
+            <p>price: 29.99</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/men/58329146764f48040dbb35d8-large.jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>Presdent Kim's T-shirt</b></h4>
+            <p>New Arrival! Printed T-shirt</p>
+            <p>price: 39.99</p>
+          </div>
+        </div>
+        
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/men/hmgoepprod.jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>LilNasx</b></h4>
+            <p>Printed T-shirt</p>
+            <p>price: 19.99</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/men/hmgoepprod (1).jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>Horses</b></h4>
+            <p>Printed T-shirt</p>
+            <p>price: 19.99</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/men/hmgoepprod (2).jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>Paxixi</b></h4>
+            <p>Hoodie</p>
+            <p>price: 34.99</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/men/hmgoepprod (3).jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>Can't nobody tell me nothing</b></h4>
+            <p>Printed Jersey Shirt</p>
+            <p>price: 24.99</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <div id="women" style="display: none; background-color: pink; overflow:auto">
+      <header>
+        <!-- <div class="center" style="text-align: center;">
+          <h2 style="vertical-align: middle">
+            <span>Clothes for men</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<img
+              src="./imgages/simple_clothes_logo.png"
+              width="50px"
+              height="50px"
+            />
+          </h2>
+        </div> -->
+      </header>      
+      <section class="main center">       
+        <h2>Popular clothes</h2>
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/women/098718246c5037f73a47293721f0d166.jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>Boling Shirt</b></h4>
+            <p>New arrival!</p>
+            <p>price: 36.99</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/women/501899_XJANM_1082_001_100_0000_Light-.jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>Gucci swimwear</b></h4>
+            <p>swimwear</p>
+            <p>price: 786.99</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/women/hmgoepprod (4).jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>T-shirt</b></h4>
+            <p>Collar-detail T-shirt</p>
+            <p>price: 14.99</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/women/hmgoepprod (5).jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>sholder up Blouse</b></h4>
+            <p>Cotton Puff-sleeved Blouse</p>
+            <p>price: 24.99</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/women/hmgoepprod (6).jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>Summer blouse</b></h4>
+            <p>MAMA Pin-tuck Blouse</p>
+            <p>price: 24.99</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="border: 1px solid gold; float: left; width: 40%; padding:20px; margin: 20px 20px 20px 20px;">
+          <img src="./imgages/women/hmgoepprod (7).jpg" alt="Avatar" style="width:75%" />
+          <div class="container">
+            <h4><b>catching eyes</b></h4>
+            <p>Puff-sleeved Blouse</p>
+            <p>price: 17.99</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+    <div id="children"></div>
+    <scirpt src="script.js"></scirpt>
+    <footer style="height: 50px;">
+      <div class="center">
+        <span >&copy;  clothes Store 756-5715</span>
+        <span><a href="https://www.facebook.com/" target="_blank"
+          ></span>&nbsp;&nbsp;&nbsp;&nbsp;<img src="./imgages/facebooklogo.jpg" width="30" height="30"
+        /></a>
+        <span><a href="" target="_blank" onclick="subscribe()"
+          ></span>&nbsp;&nbsp;&nbsp;&nbsp;<img src="./imgages/ContactUs.jpg" width="45" height="30"
+        /></a>        
+      </div>
+    </footer>
+  </body>
+</html>
+<scirpt src="./script.js"></scirpt>
+<!--
+References
+https://www.buzzfeednews.com/article/shannonkeating/fashion-is-modest-and-horny-at-the-same-time-right-now for images
+https://www.facebook.com/ for images
+https://kutar37.tistory.com/entry/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C%EC%87%BC-%EA%B5%AC%ED%98%84-cssjavascriptjquery for slide show
+https://www.wish.com/product/58329146764f48040dbb35d8?hide_login_modal=true&from_ad=goog_shopping&_display_country_code=KR&_force_currency_code=KRW&pid=googleadwords_int&c=%7BcampaignId%7D&ad_cid=58329146764f48040dbb35d8&ad_cc=KR&ad_lang=KO&ad_curr=KRW&ad_price=8562.00&campaign_id=10184773100&gclid=CjwKCAjwmf_4BRABEiwAGhDfScD9jEl0B7DzAxoUqrIMFTIZReiO2Cb4w7PzglfC3co_AKP6AayNvRoCsW0QAvD_BwE&share=web for men clothes
+https://www2.hm.com/en_us/men/campaigns/3271-lil-nas-x-merch.html for men clothes
+-->

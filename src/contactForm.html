@@ -1,0 +1,261 @@
+<html>
+  <head>
+    
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/pureCss.css" />    
+    <script src="./js/sample.js"></script>
+    <title style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"></title>Register form</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+      }
+      .wrap {
+        height: 100%;
+        width: 100%;
+        background-image: url(img/background.jpg);
+        background-position: center;
+        background-size: cover;
+        position: absolute;
+      }
+      .form-wrap {
+        width: 380px;
+        height: 630px;
+        position: relative;
+        margin: 6% auto;
+        background: #fff;
+        padding: 5px;
+        overflow: hidden;
+      }
+      .button-wrap {
+        width: 230px;
+        margin: 35px auto;
+        position: relative;
+        box-shadow: 0 0 600px 9px #fcae8f;
+        border-radius: 30px;
+      }
+      .togglebtn {
+        width: 85%;
+        padding: 10px 30px;
+        display: block;
+        margin: auto;
+        background: linear-gradient(to right, #ff105f, #ffad06);
+        border: 0;
+        outline: none;
+        border-radius: 30px;
+      }
+      #btn {
+        top: 0;
+        left: 0;
+        position: absolute;
+        width: 110px;
+        height: 100%;
+        background: linear-gradient(to right, #ff105f, #ffad06);
+        border-radius: 30px;
+        transition: 0.5s;
+      }
+      .social-icons {
+        margin: 30px auto;
+        text-align: center;
+      }
+      .social-icons img {
+        width: 30px;
+        cursor: pointer;
+      }
+      .input-group {
+        top: 180px;
+        position: absolute;
+        width: 280px;
+        transition: 0.5s;
+      }
+      .input-field {
+        width: 100%;
+        padding: 10px 0;
+        margin: 5px 0;
+        border: none;
+        border-bottom: 1px solid #999;
+        outline: none;
+        background: transparent;
+      }
+      .submit {
+        width: 85%;
+        padding: 10px 30px;
+        cursor: pointer;
+        display: block;
+        margin: auto;
+        background: linear-gradient(to right, #ff105f, #ffad06);
+        border: 0;
+        outline: none;
+        border-radius: 30px;
+      }
+      .checkbox {
+        margin: 30px 10px 30px 0;
+      }
+      span {
+        color: #777;
+        font-size: 12px;
+        bottom: 68px;
+        position: absolute;
+      }
+      #emailForm {
+        left: 50px;
+      }
+      #register {
+        left: 450px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="center">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="javascript:void(0);" onclick="menu_men();">Men</a></li>
+          <li><a href="javascript:void(0);" onclick="menu_women();">Women</a></li>
+          <li><a href="javascript:void(0);" onclick="menu_children();">Children</a></li>
+          <li><a href="contactForm.html">Register</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="wrap">
+      <div class="form-wrap">
+        <div class="button-wrap" style="text-align: center;">
+          <button type="button" class="togglebtn" onclick="emailForm()">
+            Email Form
+          </button>
+        </div>
+        <!-- <div class="social-icons">
+          <img src="img/fb.png" alt="facebook" />
+          <img src="img/tw.png" alt="twitter" />
+          <img src="img/gl.png" alt="google" />
+        </div> -->
+        <form
+          id="emailForm"
+          action="https://httpbin.org/post"
+          class="input-group"
+          method="post"
+        >
+          <input type="text" class="input-field" id="userName" placeholder="User name" required />
+          <input type="text" class="input-field" id="email" placeholder="Email" required />
+          <input type="text" class="input-field" id="address" placeholder="Address" required />
+          <input type="text" class="input-field" id="city" placeholder="City" required />
+          <input
+            type="text"
+            class="input-field"
+            id="postalCode"
+            placeholder="Postal Code"
+            required
+          />
+          <input
+            type="radio"
+            id="radio1"
+            name="chk_info"
+            value="Question"
+            onclick="div_OnOff(this.value,'con');"
+          />&nbsp;Question<br />
+          <input
+            type="radio"
+            id="radio2"
+            name="chk_info"
+            value="Comment"
+            onclick="div_OnOff(this.value,'con');"
+          />&nbsp;Comment<br />
+          <input
+            type="radio"
+            id="radio3"
+            name="chk_info"
+            value="OrderProblem"
+            onclick="div_OnOff(this.value,'con');"
+          />&nbsp;Order Problem<br />
+          <div id="con" style="display: none;">
+            <textarea id="CommentOrderProblem" rows="6" cols="50"> </textarea>
+          </div>
+          <input type="hidden" id="WebAssignment" value="DongUk" />
+          <br /><br />
+          <input type="button" class="submit" onclick="validation()" value="submit" />
+        </form>
+      </div>
+    </div>
+    <script>      
+      window.onload = function() {};
+
+      // Check when order problem radio button
+      function div_OnOff(v, id) {
+        if (v == 'OrderProblem') {
+          document.getElementById(id).style.display = ''; // Show
+        } else {
+          document.getElementById(id).style.display = 'none'; // Hide
+        }
+      }
+
+      // validate city
+      function validation() {
+        // var cities = new Array();
+        cities = [
+          'Capitals',
+          'Alberta',
+          'British Columbia',
+          'Manitoba',
+          'New Brunswick',
+          'Newfoundland',
+          'Labrador',
+          'Northwest Territories',
+          'Nova Scotia',
+          'Nunavut',
+          'Ontario',
+          'Prince Edward Island',
+          'Quebec',
+          'Saskatchewan',
+          'Yukon',
+          'Notes',
+          'Toronto'
+        ];
+
+        var city = document.getElementById('city').value;
+        function validateCity(city) {
+          console.log('city: ' + city);
+          var isvaliedcity = false;
+          for (var i = 0; i < cities.length; i++) {
+            // console.log(cities[i]);
+            if (city.toLowerCase() == cities[i].toLowerCase()) {
+              // console.log('city.toLowerCase(): ' + city.toLowerCase());
+              isvaliedcity = true;
+            }
+          }
+          return isvaliedcity;
+        }
+
+        var userName = document.getElementById('userName');
+        var email = document.getElementById('email');
+        var address = document.getElementById('address');
+        var postalCode = document.getElementById('postalCode');
+        // console.log(postalCode);
+
+        // postal code reg
+        var reg = /[ABCEGHJKLMNPRSTVXY]\d[A-Z] \d[A-Z]\d/g;
+        
+        if (userName.value == '') {
+          alert('Input user name');
+          userName.focus();
+          return false;
+        } else if (email.value == '') {
+          alert('Input email');
+          email.focus();
+          return false;
+        } else if (address.value == '') {
+          alert('Input address');
+          address.focus();
+          return false;
+        } else if (validateCity(city) == false) {
+          alert('Input proper city name');
+        } else if (reg.test(postalCode.value) == false) {
+          alert('Input proper postcode');
+        } else {
+          document.getElementById('emailForm').submit();
+        }
+      }
+    </script>
+  </body>
+</html>
